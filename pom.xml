@@ -41,6 +41,7 @@
 						<username>${username}</username>
 						<password>${password}</password>
 						<environment>${environment}</environment>
+						<applicationName>${app.name}</applicationName>
 						<businessGroupId>${businessGroupId}</businessGroupId>
 						<properties>
 							<env>${environment}</env>
