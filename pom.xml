@@ -43,7 +43,7 @@
 						<environment>${environment}</environment>
 						<businessGroupId>${businessGroupId}</businessGroupId>
 						<properties>
-							<key>value</key>
+							<env>${environment}</env>
 						</properties>
 					</armDeployment>
 				</configuration>
