@@ -64,3 +64,42 @@ jobs:
         with:
             name: artifacts
             path: target/*.jar
+
+
+# Steps for executing the deployment against OnPrem Standalone Runtime Anypoint Platform
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:    
+    - uses: actions/checkout@v3
+    - uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+    - uses: actions/download-artifact@v3
+      with:
+        name: artifacts
+
+    - uses: s4u/maven-settings-action@v2.6.0
+      with:
+        servers: |
+          [{
+              "id": "anypoint-exchange-v3",
+              "username": "${{ secrets.ANYPOINT_USERNAME }}",
+              "password": "${{ secrets.ANYPOINT_PASSWORD }}"
+          }]
+    - name: Deploy to OnPrem
+      env:
+        AUTHOR: "Andres Morales"
+      run: |
+        artifactName=$(ls *.jar | head -1)
+        mvn deploy -DmuleDeploy -Dtarget="dev" -DtargetType="server" \
+        -Dusername="${{secrets.ANYPOINT_USERNAME}}" -Dpassword="${{secrets.ANYPOINT_PASSWORD}}" \
+        -Denvironment="dev" -DbusinessGroupId="62f9f82d-6f2e-4c24-a1ba-259b81a7ad4d"
+
+
+
+
+
