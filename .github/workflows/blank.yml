@@ -98,7 +98,7 @@ jobs:
         mvn deploy -DmuleDeploy -Dtarget="dev" -DtargetType="server" \
         -Dusername="${{secrets.ANYPOINT_USERNAME}}" -Dpassword="${{secrets.ANYPOINT_PASSWORD}}" \
         -Denvironment="dev" -DbusinessGroupId="62f9f82d-6f2e-4c24-a1ba-259b81a7ad4d" \
-        -Dapp.name="hello-acm1907222"
+        -DapplicationName="hello-acm1907222"
 
 
 
