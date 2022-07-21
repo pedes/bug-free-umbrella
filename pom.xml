@@ -37,11 +37,11 @@
 						<muleVersion>${mule.runtime}</muleVersion>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<target>${target}</target>
-						<targetType>${target.type}</targetType>
+						<targetType>${targetType}</targetType>
 						<username>${username}</username>
 						<password>${password}</password>
 						<environment>${environment}</environment>
-						<applicationName>${app.name}</applicationName>
+						<applicationName>${applicationName}</applicationName>
 						<businessGroupId>${businessGroupId}</businessGroupId>
 						<properties>
 							<env>${environment}</env>
